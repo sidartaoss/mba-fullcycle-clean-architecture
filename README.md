@@ -80,7 +80,7 @@ Normalmente, os eventos de domínio podem ser publicados a partir de 3 maneiras 
 
 - _Publish righ away_: logo que acontece uma alteração no agregado, é publicado um evento a partir do _Domain Event Publisher_. Não é uma abordagem muito utilizada, porque o evento é disparado antes de o estado do agregado estar persistido;
 
-- _Publish after persistence_: logo que o estado do agregado é persistido, é publicado o evento. Não é garantido que evento seja publicado no caso de um _bug_ do sistema, aonde se esquece de fazer a chamada para o _Domain Event Publisher_. Também não é garantido que o evento chegue até o sistema de mensageria, por exemplo, caso o _broker_ ou a própria aplicação esteja fora do ar;
+- _Publish after persistence_: logo que o estado do agregado é persistido, é publicado o evento. Não é garantido que o evento seja publicado no caso de um _bug_ do sistema, aonde se esquece de fazer a chamada para o _Domain Event Publisher_. Também não é garantido que o evento chegue até o sistema de mensageria, por exemplo, caso o _broker_ ou a própria aplicação esteja fora do ar;
 
 - _Publish through persistence_ (_Job_ ou _CDC_): consiste em usar a camada de persistência para persistir, juntamente com o agregado, os eventos de domínio e, logo após, obter esses eventos de domínio da camada de persistência a partir de um _job_ ou de um mecanismo mais sofisticado de _message relay_, como um _Change Data Capture_ (_CDC_) - o _Oracle GoldenGate_, por exemplo - e publicar para o _message broker_.
 
